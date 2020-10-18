@@ -22,13 +22,13 @@
 
 ### 1) VirtualBox 설치
 
-![image-20201018231631813](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20201018231631813.png)
+![image-20201018233530923](VirtualBox_Linux_환경.assets/image-20201018233530923.png)
 
 
 
 ### 2) Ubuntu iso 다운로드
 
-![image-20201018231710255](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20201018231710255.png)
+![image-20201018233517055](VirtualBox_Linux_환경.assets/image-20201018233517055.png)
 
 > ubuntu 검색한 후, Download Ubuntu Desktop 선택해서 설치
 
@@ -36,17 +36,17 @@
 
 ### 3) Virtual Box 실행
 
-![image-20201018231834310](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20201018231834310.png)
+![image-20201018233459008](VirtualBox_Linux_환경.assets/image-20201018233459008.png)
 
 
 
-![image-20201018231849855](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20201018231849855.png)
+![image-20201018233445080](VirtualBox_Linux_환경.assets/image-20201018233445080.png)
 
 > 호스트 키 조합의 단축키 Right Control를 한글 윈도우에서는 동작하지 않기 때문에 **Shift+Ctrl**로 재설정합니다.
 
 
 
-![image-20201018231924938](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20201018231924938.png)
+![image-20201018233421398](VirtualBox_Linux_환경.assets/image-20201018233421398.png)
 
 > 확장 기능 패키지 설치
 
@@ -54,25 +54,25 @@
 
 ### 4. Ubuntu 가상 머신 생성
 
-![image-20201018232207772](VirtualBox Linux 환경.assets/image-20201018232207772.png)
+![image-20201018232207772](VirtualBox_Linux_환경.assets/image-20201018232207772.png)
 
 
 
-![image-20201018232228614](VirtualBox Linux 환경.assets/image-20201018232228614.png)
+![image-20201018232228614](VirtualBox_Linux_환경.assets/image-20201018232228614.png)
 
 > 초록색 범위 내에서 선택
 
 
 
-![image-20201018232243453](VirtualBox Linux 환경.assets/image-20201018232243453.png)
+![image-20201018232243453](VirtualBox_Linux_환경.assets/image-20201018232243453.png)
 
 
 
-![image-20201018232257074](VirtualBox Linux 환경.assets/image-20201018232257074.png)
+![image-20201018232257074](VirtualBox_Linux_환경.assets/image-20201018232257074.png)
 
 
 
-![image-20201018232317775](VirtualBox Linux 환경.assets/image-20201018232317775.png)
+![image-20201018232317775](VirtualBox_Linux_환경.assets/image-20201018232317775.png)
 
 > 하드 공간 절약을 원한다면 동적할당, 빠른 속도를 원한다면 고정 크기 선택 
 
@@ -80,41 +80,41 @@
 
 ### 5) 가상 머신 설정
 
-![image-20201018232421945](VirtualBox Linux 환경.assets/image-20201018232421945.png)
+![image-20201018232421945](VirtualBox_Linux_환경.assets/image-20201018232421945.png)
 
 
 
-![image-20201018232719440](VirtualBox Linux 환경.assets/image-20201018232719440.png)
+![image-20201018232719440](VirtualBox_Linux_환경.assets/image-20201018232719440.png)
 
 
 
-![image-20201018232441701](VirtualBox Linux 환경.assets/image-20201018232441701.png)
+![image-20201018232441701](VirtualBox_Linux_환경.assets/image-20201018232441701.png)
 
 
 
-![image-20201018232502310](VirtualBox Linux 환경.assets/image-20201018232502310.png)
+![image-20201018232502310](VirtualBox_Linux_환경.assets/image-20201018232502310.png)
 
 > 왼쪽 저장소 메뉴에서 부팅에 사용할 우분투 iso 이미지를 가상광학드라이브에 삽입
 
 
 
-![image-20201018232524735](VirtualBox Linux 환경.assets/image-20201018232524735.png)
+![image-20201018232524735](VirtualBox_Linux_환경.assets/image-20201018232524735.png)
 
 
 
-![image-20201018232544240](VirtualBox Linux 환경.assets/image-20201018232544240.png)
+![image-20201018232544240](VirtualBox_Linux_환경.assets/image-20201018232544240.png)
 
 
 
-![image-20201018232558970](VirtualBox Linux 환경.assets/image-20201018232558970.png)
+![image-20201018232558970](VirtualBox_Linux_환경.assets/image-20201018232558970.png)
 
 
 
-![image-20201018232614004](VirtualBox Linux 환경.assets/image-20201018232614004.png)
+![image-20201018232614004](VirtualBox_Linux_환경.assets/image-20201018232614004.png)
 
 
 
-![image-20201018232630300](VirtualBox Linux 환경.assets/image-20201018232630300.png)
+![image-20201018232630300](VirtualBox_Linux_환경.assets/image-20201018232630300.png)
 
 
 
