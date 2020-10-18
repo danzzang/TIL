@@ -22,13 +22,13 @@
 
 ### 1) VirtualBox 설치
 
-![image-20201018233530923](VirtualBox_Linux_환경.assets/image-20201018233530923.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018233530923.png" alt="image-20201018233530923" style="zoom: 67%;" />
 
 
 
 ### 2) Ubuntu iso 다운로드
 
-![image-20201018233517055](VirtualBox_Linux_환경.assets/image-20201018233517055.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018233517055.png" alt="image-20201018233517055" style="zoom:67%;" />
 
 > ubuntu 검색한 후, Download Ubuntu Desktop 선택해서 설치
 
@@ -36,17 +36,17 @@
 
 ### 3) Virtual Box 실행
 
-![image-20201018233459008](VirtualBox_Linux_환경.assets/image-20201018233459008.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018233459008.png" alt="image-20201018233459008" style="zoom:67%;" />
 
 
 
-![image-20201018233445080](VirtualBox_Linux_환경.assets/image-20201018233445080.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018233445080.png" alt="image-20201018233445080" style="zoom:67%;" />
 
 > 호스트 키 조합의 단축키 Right Control를 한글 윈도우에서는 동작하지 않기 때문에 **Shift+Ctrl**로 재설정합니다.
 
 
 
-![image-20201018233421398](VirtualBox_Linux_환경.assets/image-20201018233421398.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018233421398.png" alt="image-20201018233421398" style="zoom:67%;" />
 
 > 확장 기능 패키지 설치
 
@@ -54,25 +54,25 @@
 
 ### 4. Ubuntu 가상 머신 생성
 
-![image-20201018232207772](VirtualBox_Linux_환경.assets/image-20201018232207772.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232207772.png" alt="image-20201018232207772" style="zoom:67%;" />
 
 
 
-![image-20201018232228614](VirtualBox_Linux_환경.assets/image-20201018232228614.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232228614.png" alt="image-20201018232228614" style="zoom:67%;" />
 
 > 초록색 범위 내에서 선택
 
 
 
-![image-20201018232243453](VirtualBox_Linux_환경.assets/image-20201018232243453.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232243453.png" alt="image-20201018232243453" style="zoom:67%;" />
 
 
 
-![image-20201018232257074](VirtualBox_Linux_환경.assets/image-20201018232257074.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232257074.png" alt="image-20201018232257074" style="zoom:67%;" />
 
 
 
-![image-20201018232317775](VirtualBox_Linux_환경.assets/image-20201018232317775.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232317775.png" alt="image-20201018232317775" style="zoom:67%;" />
 
 > 하드 공간 절약을 원한다면 동적할당, 빠른 속도를 원한다면 고정 크기 선택 
 
@@ -80,41 +80,41 @@
 
 ### 5) 가상 머신 설정
 
-![image-20201018232421945](VirtualBox_Linux_환경.assets/image-20201018232421945.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232421945.png" alt="image-20201018232421945" style="zoom:67%;" />
 
 
 
-![image-20201018232719440](VirtualBox_Linux_환경.assets/image-20201018232719440.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232719440.png" alt="image-20201018232719440" style="zoom:67%;" />
 
 
 
-![image-20201018232441701](VirtualBox_Linux_환경.assets/image-20201018232441701.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232441701.png" alt="image-20201018232441701" style="zoom:67%;" />
 
 
 
-![image-20201018232502310](VirtualBox_Linux_환경.assets/image-20201018232502310.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232502310.png" alt="image-20201018232502310" style="zoom:67%;" />
 
 > 왼쪽 저장소 메뉴에서 부팅에 사용할 우분투 iso 이미지를 가상광학드라이브에 삽입
 
 
 
-![image-20201018232524735](VirtualBox_Linux_환경.assets/image-20201018232524735.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232524735.png" alt="image-20201018232524735" style="zoom:67%;" />
 
 
 
-![image-20201018232544240](VirtualBox_Linux_환경.assets/image-20201018232544240.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232544240.png" alt="image-20201018232544240" style="zoom:67%;" />
 
 
 
-![image-20201018232558970](VirtualBox_Linux_환경.assets/image-20201018232558970.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232558970.png" alt="image-20201018232558970" style="zoom:67%;" />
 
 
 
-![image-20201018232614004](VirtualBox_Linux_환경.assets/image-20201018232614004.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232614004.png" alt="image-20201018232614004" style="zoom:67%;" />
 
 
 
-![image-20201018232630300](VirtualBox_Linux_환경.assets/image-20201018232630300.png)
+<img src="VirtualBox_Linux_환경.assets/image-20201018232630300.png" alt="image-20201018232630300" style="zoom:67%;" />
 
 
 
