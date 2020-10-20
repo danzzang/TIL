@@ -146,7 +146,7 @@ python labelImg.py
 
 #### 6) 학습해볼까요?
 
-```
+```cmd
 python flow --model ./cfg/my-tiny-yolo.cfg --labels ./labels.txt --trainer adam --dataset ../data/dataset/ --annotation ../data/annotations/ --train --summary ./logs --batch 5 --epoch 100 --save 50 --keep 5 --lr 1e-04 --gpu 0.5
 ```
 
@@ -157,7 +157,7 @@ python flow --model ./cfg/my-tiny-yolo.cfg --labels ./labels.txt --trainer adam 
 
 #### 7) 학습 후
 
-```
+```cmd
 python flow --imgdir ../data/testset/ --model ./cfg/my-tiny-yolo.cfg --load -1 --batch 1 --threshold 0.5
 ```
 
