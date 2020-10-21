@@ -30,8 +30,8 @@
   pyrcc5 -o libs/resources.py resources.qrc
   python labelImg.py
   ```
-  
-- ![image-20201020211728199](Darkflow_YOLO.assets/image-20201020211728199.png)
+
+- ![image-20201020211728199](Darkflow_YOLO.assets/image-20201020211728199-1603253390188.png)
 
   - python labelImg.py 하면 이런 창 뜨는데 일단은 닫고, 다른거 설치하자 
 
@@ -72,13 +72,22 @@ activate tensorflow # 가상 환경 활성화
   pip install .
   ```
 
+- 잠깐! 필요한 라이브러리도 설치해봐요!
 
+  > ```
+  > cd test
+  > 
+  > ## 설치하기 전에 requiremetns-tesitng.txt 파일에 들어가서 teserflow를 지워줍니다.(버전 문제가 있어요!)
+  > pip install -r requiremetns-testing.txt
+  > ```
+  >
+  > ![image-20201020213739252](Darkflow_YOLO.assets/image-20201020213739252.png)
 
 ## 4. labelImg를 이용한 이미지 학습
 
 #### 1) 데이터 폴더 정리
 
-- ![image-20201020211741539](Darkflow_YOLO.assets/image-20201020211741539.png)
+- ![image-20201020211741539](Darkflow_YOLO.assets/image-20201020211741539-1603253390188.png)
 
 
 
@@ -91,7 +100,7 @@ activate tensorflow # 가상 환경 활성화
   - 학습한 내용으로 인식할 사진 넣고
   - 인식 결과는 out 폴더에 저장됩니다.
 
-  ![image-20201020211750074](Darkflow_YOLO.assets/image-20201020211750074.png)
+  ![image-20201020211750074](Darkflow_YOLO.assets/image-20201020211750074-1603253390189.png)
 
 
 
@@ -99,10 +108,18 @@ activate tensorflow # 가상 환경 활성화
 
 ```cmd
 cd labelImg
+
+## 필요한 라이브러리 설치
+cd requirements
+pip install -r requirements-linux-python3.txt
+
+## 설치 후 다시 labeImg 폴더로 나와줍니다.
+
+cd ..
 python labelImg.py
 ```
 
-![image-20201020211756454](Darkflow_YOLO.assets/image-20201020211756454.png)
+![image-20201020211756454](Darkflow_YOLO.assets/image-20201020211756454-1603253390189.png)
 
 
 
@@ -110,13 +127,13 @@ python labelImg.py
 
 - w 누르고, 마우스로 bounding-box 잡아주기
 
-![image-20201020211805686](Darkflow_YOLO.assets/image-20201020211805686.png)
+![image-20201020211805686](Darkflow_YOLO.assets/image-20201020211805686-1603253390189.png)
 
 
 
 #### 4) Save 누르고 annotations에 저장
 
-![image-20201020211816026](Darkflow_YOLO.assets/image-20201020211816026.png)
+![image-20201020211816026](Darkflow_YOLO.assets/image-20201020211816026-1603253390189.png)
 
 
 
@@ -124,7 +141,7 @@ python labelImg.py
 
 - darkflow 폴더 내의 labels.txt 문서를 labelImg에서 처럼 자신의 클래스 목록으로 수정
 
-![image-20201020211827081](Darkflow_YOLO.assets/image-20201020211827081.png)
+![image-20201020211827081](Darkflow_YOLO.assets/image-20201020211827081-1603253390189.png)
 
 
 
@@ -132,13 +149,13 @@ python labelImg.py
 
 - tiny-yolo.cfg 파일을 복사해서 my-tiny-yolo.cfg로 파일명 수정
 
-  ![image-20201020211837602](Darkflow_YOLO.assets/image-20201020211837602.png)
+  ![image-20201020211837602](Darkflow_YOLO.assets/image-20201020211837602-1603253390189.png)
 
 - 수정해야 할 내용은 filters 와 classes 값으로 우선,  classes는 정의한 문제의 클래스 수를 지정
 
 - filters는 (5+classes)*5로 설정 (https://www.youtube.com/watch?v=9s_FpMpdYW8 참고)
 
-  ![image-20201020211844509](Darkflow_YOLO.assets/image-20201020211844509.png)
+  ![image-20201020211844509](Darkflow_YOLO.assets/image-20201020211844509-1603253390189.png)
 
 
 
@@ -146,24 +163,49 @@ python labelImg.py
 
 #### 6) 학습해볼까요?
 
+- 처음 가중치를 학습 할 경우:
+
 ```cmd
+cd darkflow #darkflow dir로 이동 
+
 python flow --model ./cfg/my-tiny-yolo.cfg --labels ./labels.txt --trainer adam --dataset ../data/dataset/ --annotation ../data/annotations/ --train --summary ./logs --batch 5 --epoch 100 --save 50 --keep 5 --lr 1e-04 --gpu 0.5
 ```
 
-- epoch : 몇 step 할지 ? 
-- 명령어 어떤거 의미하는지 공부하자
+>- `trainer` : optimizer 설정
+>
+>- `lr` : learning rate로 1e-04는 0.0001을 의미한다.
+>
+>- ` gpu` : gpu 사용 여부, gpu가 없는 환경이라면 옵션을 제외하면 된다.
+>
+>- `load` : 이전 학습 가중치를 이어서 학습하겠다는 옵션으로 -1은 마지막 save를 불러온다. 특정 step부터 시작할 경우 저장된 step의 값을 명시적으로 입력하면 된다.
+>
+>- `epoch` : 한 번의 epoch는 인공 신경망에서 전체 데이터 셋에 대해 forward pass/backward pass 과정을 거친 것을 말함. 즉, 전체 데이터 셋에 대해 한 번 학습을 완료한 상태
+> - **epochs = 40이라면 전체 데이터를 40번 사용해서 학습을 거치는 것입니다.**
+>
+>- `batch`: **Batch Size**는 말 그대로 하나의 Mini-Batch를 몇개의 데이터로 구성할지에 대한 정보입니다. 100개의 이미지-라벨이 있는 상황에서 Batch Size를 5로 정했다면 우리의 모델은 한번에 하나의 데이터를 볼때마다 매번 가중치 값을 갱신하지 않고 5개 데이터에 대한 값을 한번에 계산한 뒤 가중치를 갱신해주게 되므로 총 20번의 갱신 과정만을 거치게 됩니다. 이 특성으로 인해 Mini-Batch Gradient Descent는 Naive한 Batch Gradient Descent보다 더 적은 컴퓨터 자원을 소모하게 됩니다.
+>- `iteration` : **Iteration**은 한 Epoch를 진행하기 위해 몇 번의 가중치 갱신이 이루어지는지에 대한 정보입니다. 위의 예시에서는 가중치를 갱신하는 과정이 총 20번 이루어지므로 20이 Iteration의 값이라고 말할 수 있습니다. Batch Size가 커질수록 당연히 Iteration의 값은 줄어들고 Batch Size가 작아질수록 Iteration의 값은 늘어납니다. Batch Size 또한 프로그래머가 직접 조정해주어야 하는 Hyper Parameter의 일종으로 볼 수 있으므로 실험을 통해 최적값을 찾는 과정이 필요합니다.s
 
+  
 
+  - 이 전에 학습된 가중치를 이어서 학습할 경우:
 
-#### 7) 학습 후
+  ```cmd
+python flow --model ./cfg/my-tiny-yolo.cfg --labels ./labels.txt --trainer adam --dataset ../data/dataset/ --annotation ../data/annotations/ --train --summary ./logs --batch 5 --epoch 100 --save 50 --keep 5 --lr 1e-04 --gpu 0.5 --load -1
+  ```
 
-```cmd
+  
+
+  
+
+  #### 7) 학습 후
+
+  ```cmd
 python flow --imgdir ../data/testset/ --model ./cfg/my-tiny-yolo.cfg --load -1 --batch 1 --threshold 0.5
-```
+  ```
 
-- –threshold 0.5 는 confidence가 0.5보다 높을 경우에는 boundary-box를 수용하겠다는 의미이다. 다시 말해, 특정 부분에 객체가 존재할 확률이 0.5 이상이라고 예측할 경우에만 박스를 그린다.
+  - –threshold 0.5 는 confidence가 0.5보다 높을 경우에는 boundary-box를 수용하겠다는 의미이다. 다시 말해, 특정 부분에 객체가 존재할 확률이 0.5 이상이라고 예측할 경우에만 박스를 그린다.
 
-![image-20201020211853281](Darkflow_YOLO.assets/image-20201020211853281.png)
+  ![image-20201020211853281](Darkflow_YOLO.assets/image-20201020211853281-1603253390189.png)
 
-- 학습이 잘 되면 out 사진에서 이렇게 박스가 그려진다고 합니다
-- 모두들 화이팅 ! !! ! ! ! 
+  - 학습이 잘 되면 out 사진에서 이렇게 박스가 그려진다고 합니다
+  - 모두들 화이팅 ! !! ! ! ! (지훈이가) ?? 
