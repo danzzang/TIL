@@ -209,3 +209,13 @@ python flow --imgdir ../data/testset/ --model ./cfg/my-tiny-yolo.cfg --load -1 -
 
   - 학습이 잘 되면 out 사진에서 이렇게 박스가 그려진다고 합니다
   - 모두들 화이팅 ! !! ! ! ! (지훈이가) ?? 
+
+
+
+#### 8) 동영상 분석
+
+```cmd
+python flow --model cfg/my-tiny-yolo.cfg --load -1 --demo video2.mp4 --saveVideo --batch 1 --threshold 0.1
+```
+
+- video2는 darkflow 파일 안에 있어야 한다. 
