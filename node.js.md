@@ -18,5 +18,62 @@
 
 
 
+## 3. 문법
+
+#### 1. Hellow World! 
+
+```js
+var express = require('express');
+var app = express(); // express app 생성
+
+// req: 요청, red: 응답
+app.get('/', function(req, res) {
+  // '/' 여기로 get 요청이 들어오면 
+  res.send('Hello World!');
+});
+
+app.listen(3000, function() {
+  console.log('Example app is listening on port 3000');
+})
+
+```
+
+![image-20201025152034850](node.js.assets/image-20201025152034850.png)
+
+
+
+
+
+#### 2. 라우팅 
+
+```js
+// app.METHOD(PATH, HANDLER)
+// METHOD : HTTP 요청 메소드 - get, post, delete, put ...
+// PATH : 라우트 경로
+// HANDLER : 실행 될 콜백 함수
+
+app.get('/user/:id', function(req, res) {
+    res.send('Received a GET request, param:' + req.params.id);
+})
+
+app.post('/user', function(req,res) {
+    res.json({ success : true })
+})
+
+app.put('/user', function(req, res) {
+    res.status(400).json({ message : 'Hey, you. Bad Request !'})
+})
+
+app.delete('/user', function(req, res){
+    res.send('Received a DELETE request');
+})
+
+app.listen(3000, function() {
+    console.log('Exampel app is listening on port 3000')
+})
+```
+
+
+
 
 

@@ -219,3 +219,29 @@ python flow --model cfg/my-tiny-yolo.cfg --load -1 --demo video2.mp4 --saveVideo
 ```
 
 - video2는 darkflow 파일 안에 있어야 한다. 
+
+
+
+
+
+# GPU 사용하기
+
+### 1. 아나콘다 설치
+
+### 2. CUDA Toolkit 설치
+
+- **cuda_10.0.130_411.31_win10**을 설치해주세요.
+  https://developer.nvidia.com/cuda-10.0-download-archive
+
+### 3. cuDNN SDK 설치
+
+- **cuDNN v7.6.5 (November 5th, 2019), for CUDA 10.0**을 설치해주세요.
+https://developer.nvidia.com/rdp/cudnn-download
+
+### 4. tensorflow 1.* 설치
+`conda install -c anaconda tensorflow-gpu=1.15.0`
+
+- python 버전이 높으면 위의 버전의 tensor가 안깔리므로, 가상환경 만들어서 하자
+
+
+
