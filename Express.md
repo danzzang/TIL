@@ -269,3 +269,74 @@ npm install nodemon
 },
 ```
 
+
+
+## 8. populate 
+
+#### 1. company_model 외래키 설정
+
+```js
+const companySchema = new mongoose.Schema({
+  company_email: {
+    type: String,
+    allowNull: false,
+    unique: true
+  },
+  company_nickname: {
+    type: String,
+    allowNull: false,
+    unique: true
+  },
+  company_pwd: {
+    type: String,
+    allowNull: false
+  },
+  company_industry: {
+    type: String,
+    allowNull: false
+  },
+  company_execption: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'video'
+    }
+  ],
+  company_video: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'video'
+    }
+  ],
+  company_channel: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'channel'
+    }
+  ],
+  company_contact: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'channel'
+    }
+  ]
+})
+```
+
+
+
+#### 2. 외래키를 이용하여 populate
+
+```js
+// 스크랩 채널 조회
+companyRoutes.get('/channel', async (req, res) => {
+  try {
+    const company = await CompanyModel.findOne({
+      _id: req.headers.company_id
+    }).populate('company_channel')
+    res.status(200).send(company)
+  } catch (err) {
+    res.status(500).send(err)
+  }
+})
+```
+
