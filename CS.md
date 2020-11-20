@@ -54,7 +54,7 @@
 >    - 더 많은 서버가 추가되고, 데이터베이스가 전체적으로 분산됨 
 >    - 하나의 데이터베이스에서 작동하지만 여러 호스트에서 작동
 >
-> ![image-20201028214607380](CS.assets/image-20201028214607380.png)
+> <img src="CS.assets/image-20201028214607380.png" alt="image-20201028214607380" style="zoom:80%;" />
 >
 > *** SQL 데이터 베이스는 일반적으로 수직적 확장만을 지원 
 >
@@ -111,8 +111,9 @@
 
 
 
-## 2. OS
-### 1. Thread란 ?
+
+
+## 2. Thread란 ?
 
 > - 쓰레드란 **프로그램(프로세스)의 실행 단위**, 하나의 프로세스는 여러개의 쓰레드로 구성이 가능
 >
@@ -122,7 +123,7 @@
 >
 > - 각 쓰레드별로 자신만의 스택과 레지스터 가짐
 >
->   ![image-20201108123059058](CS.assets/image-20201108123059058.png)
+>   <img src="CS.assets/image-20201108123059058.png" alt="image-20201108123059058" style="zoom:80%;" />
 >
 > - 한 순간에는 하나의 쓰레드만 실행 가능
 
@@ -171,20 +172,20 @@
 - Mutex / semaphore / Monitor
   - 세가지 모두 운영체제의 동기화 기법
 
-> Mutex (Mutual Exclusion)
+> **Mutex (Mutual Exclusion)**
 >
 > - 쓰레드의 동시 접근을 허용하지 않는다는 의미
 > - 뮤텍스의 쓰레드 동기화 방법은 임계영역에 들어가기 위해 이 뮤텍스를 가지고 있어야 들어갈 수 있음
 
 
 
-> Semaphore
+> **Semaphore**
 >
 > - 세마포어는 동시 접근 동기화가 아닌 접근 순서 동기화에 더 관련 있음
 
 
 
-> Monitor
+> **Monitor**
 >
 > - Mutex와 Queue을 가지고 있는 Synchronization 메카니즘
 
@@ -217,7 +218,7 @@
 
 
 
-> Mutex Vs Semaphore
+> **Mutex** Vs **Semaphore**
 >
 > - 세마포어
 >   - 세마포어는 소유할 수 없음
@@ -228,7 +229,7 @@
 
 
 
-### 3. 데드락
+## 3. 데드락
 
 > **데드락**이란?
 >
@@ -243,3 +244,167 @@
 > **회복**은 교착상태가 발생하는 것을 막지는 않고, 발생하면 발생 이후에 문제를 해결하는 방법, 
 >
 > **무시**는 교착 상태를 해결할 때 발생하는 성능 저하가 더 크면 그냥 무시해버리는 것 
+
+
+
+## 4. Array :vs: Linked List 
+
+<img src="https://www.studytonight.com/data-structures/images/array-vs-linked-list.png" alt="Linked List vs. Array | Studytonight" style="zoom: 67%;" />
+
+### 1. Array
+
+> 가장 기본적인 자료구조, 논리적 저장 순서와 물리적 저장 순서가 일치한다
+>
+> 따라서 인덱스로 해당 원소에 접근 할 수 있음. 그렇기 때문에 찾고자 하는 원소의 인덱스 값을 알고 있으면 `Big-O(1)`에 해당 원소로 접근 가능
+>
+> **random access** 가 가능하다는 장점 
+
+> 하지만 삭제 또는 삽입의 과정에서는 해당 원소에 접근하여 작업을 완료한 뒤 => O(1)
+>
+> 추가적 작업이 필요하다.
+>
+> 예를 들면, 배열의 원소 중 한 가지를 삭제하면, 배열의 연속적인 특징이 깨지게 되고, 빈 공간이 생김 
+>
+> 삭제한 원소보다 큰 인덱스를 갖는 원소들은 shift 해주어야 하는 비용 발생, 이 경우 시간 복잡도는 O(n)
+>
+> Array 자료구조에서 삽입, 삭제 기능에 대한 time complexity의 worst case는 O(n)
+
+
+
+### 2. Linked List
+
+> 위의 문제를 해결하기 위한 자료 구조
+>
+> 각각의 원소들은 자기 자신 다음에 어떤 원소가 있는지만을 기억한다.
+>
+> 따라서 이 부분만 다른 값으로 바꿔주면 삭제와 삽입을 O(1)에 해결 가능
+
+> 하지만 원하는 위치에 삽입을 할 때는 원하는 위치를 검색하는 과정에서 첫 번째부터 다 확인해야 함, Array와는 다르게 논리적 저장 순서와 물리적 저장 순서가 일치하지 않기 때문이다.
+>
+> 그래서 그 원소를 찾기 위해 시간 복잡도 O(n) 추가적으로 발생 
+
+> Linked List는 Tree 구조의 근간이 되는 자료 구조, Tree에서 사용되었을 때 그 유용성이 드러남 
+
+
+
+## 5. Stack & Queue
+
+### 1. Stack
+
+> 선형 자료구조, **Last In First Out (LIFO)**. 나중에 들어간 원소가 먼저 나온다.
+
+
+
+### 2. Queue
+
+> 선형 자료구조, **First In First Out (FIFO)**. 먼저 들어간 원소가 먼저 나온다.
+
+
+
+<img src="CS.assets/image-20201120114809115.png" alt="image-20201120114809115" style="zoom: 80%;" />
+
+
+
+## 6. Tree
+
+> 비선형 자료구조 , 계층적 관계(Hierarchical Relationship)를 표현하는 자료 구조 
+
+
+
+### 1. 트리 구성요소
+
+- **Node** : 트리를 구성하고 있는 각각의 요소 
+- **Edge** : 트리를 구성하기 위해 노드와 노드를 연결하는 선 
+- **Root Node** : 트리 구조에서 최상위에 있는 노드
+- **Terminal Node (= leaf Node)** : 하위에 다른 노드가 연결되어 있지 않은 노드 의미
+- **Internal Node** : leaf node를 제외한 모든 노드, root node도 포함
+
+
+
+### 2. Binary Tree (이진트리)
+
+> 루트 노드를 중심으로 두개의 서브 트리로 나뉘어 진다. 또한 나뉘어진 두 서브 트리도 모두 이진 트리어야 한다. 
+>
+> 공집합도 이진 트리로 포함시켜야 한다. 그래야 재귀적으로 조건을 확인해갔을 때, leaf node에 다달았을 때, 정의를 만족하기 때문이다. 따라서 노드가 하나 뿐인 것도 이진 트리 정의에 만족
+
+> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Binary_tree.svg" alt="Binary tree - Wikipedia" style="zoom: 67%;" />
+
+
+
+> **Level**(레벨) : 각 층별, 루트 노드의 레벨은 0
+>
+> **height**(높이) : 트리의 최고 레벨, 위의 트리는 3레벨 ?
+
+
+
+### 3. Perfect Binary Tree (포화 이진 트리) & Complete Binary Tree (완전 이진 트리)
+
+> ![img](https://t1.daumcdn.net/cfile/tistory/992164335A05B1E21E)
+
+> **포화 이진 트리** : 모든 레벨이 꽉 찬 이진 트리
+>
+> **완전 이진 트리** : 위에서 아래로, 왼쪽에서 오른쪽으로 순서대로 차곡차곡 채워진 이진 트리 
+
+> 배열로 구성된 Binary Tree는 노드의 개수가 n개, root가 0이 아닌 1에서 시작할 때, 
+>
+> i 번째 노드에 대해서 parent(i) = i / 2, left_child(i) = 2i, right _child(i) = 2i + 1 의 index 값을 갖는다. 
+
+
+
+### 4 . BST (Binary Search Tree)
+
+> 이진 탐색 트리는 이진 트리의 일종 
+>
+> 이진 탐색 트리는 데이터를 저장하는 규칙이 있고, 규칙으로 특정 데이터의 위치를 찾는데 사용할 수 있다.
+>
+> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/1200px-Binary_search_tree.svg.png" alt="Binary search tree - Wikipedia" style="zoom: 20%;" />
+
+> **규칙**
+>
+> 1.  **이진 탐색 트리의 노드에 저장된 키는 유일**
+> 2. **부모의 키가 왼쪽 자식 노드의 키보다 크다**
+> 3. **부모의 키가 오른쪽 자식 노드의 키보다 작다**
+> 4. **왼쪽과 오른쪽 서브트리도 이진 탐색 트리이다**
+
+> 이진 탐색 트리의 탐색 연산은 O(log n)의 시간 복잡도 가짐 
+>
+> 정확히 말하면 O(h) 라고 표현하는 것이 맞음
+>
+> 트리의 높이를 하나씩 더해갈수록 추가할 수 있는 노드의 수가 두 배씩 증가하기 때문
+>
+> 이러한 이진 탐색 트리는 Skewed Tree(편향 트리)가 될 수 있음, 저장 순서에 따라 계속 한 쪽으로만 노드가 추가되는 경우가 발생하기 때문이다. 이럴 경우 성능에 영향을 미치게 되며, 탐색의 Worst Case가 되고 시간 복잡도는 O(n)
+
+
+
+### 5. Binary Heap
+
+> 자료구조의 일종, Tree 형식을 하고 있으며, 배열에 기반한  Complete Binary Tree 
+>
+> 배열에 트리의 값들을 넣어줄 때, 0번 째는 건너 뛰고 **1번 index 부터 루트노드**가 시작됨 
+>
+> 노드의 고유번호 값과 배열의 index를 일치시켜 혼동을 줄이기 위함 
+
+<img src="https://www.geeksforgeeks.org/wp-content/uploads/MinHeapAndMaxHeap.png" alt="Heap Data Structure - GeeksforGeeks" style="zoom:50%;" />
+
+#### 1) Max Heap
+
+> Root node에 있는 값이 제일 큼, 최댓값을 찾는데 소요되는 연산의 time complexity가 O(1)
+>
+> complete binary tree이기 때문에 배열을 사용하여 효율적으로 관리할 수 잇음 
+>
+> random access가 가능
+>
+> heap의 구조를 계속 유지하기 위해 제거된 루트 노드를 대체 할 다른 노드가 필요
+>
+> heap은 맨 마지막 노드를 루트 노드로 대체 시킨 후, 다시 heapify 과정을 거쳐 heap 구조 유지
+>
+> 이런 경우에는 결국 O(log n)의 시간복잡도고 최대값 또는 최소값에 접근
+
+
+
+#### 2) Min Heap 
+
+> Root node에 있는 값이 제일 작음, 최댓값을 찾는데 소요되는 연산의 time complexity가 O(1)
+>
+> max heap과 비슷
+
