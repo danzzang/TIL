@@ -52,7 +52,7 @@
 
 ## 2. Vue LifeCycle
 
-<img src="https://miro.medium.com/max/1500/1*tnSXRrpLBYmfHnIagITlcg.png" alt="Image for post" style="zoom: 33%;" />
+<img src="https://miro.medium.com/max/1500/1*tnSXRrpLBYmfHnIagITlcg.png" alt="Image for post" style="zoom: 25%;" />
 
 ### 1. Creation : 컴포넌트 초기화 단계
 

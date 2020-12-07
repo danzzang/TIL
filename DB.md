@@ -56,7 +56,7 @@
 >    - 더 많은 서버가 추가되고, 데이터베이스가 전체적으로 분산됨 
 >    - 하나의 데이터베이스에서 작동하지만 여러 호스트에서 작동
 >
-> <img src="/Users/leedain/Desktop/TIL/CS.assets/image-20201028214607380.png" alt="image-20201028214607380" style="zoom:80%;" />
+> <img src="DB.assets/image-20201207135930139.png" alt="image-20201207135930139" style="zoom:33%;" />
 >
 > *** SQL 데이터 베이스는 일반적으로 수직적 확장만을 지원 
 >
@@ -167,7 +167,7 @@
 
 
 
-<img src="/Users/leedain/Desktop/TIL/CS.assets/image-20201120114809115.png" alt="image-20201120114809115" style="zoom: 80%;" />
+<img src="DB.assets/image-20201207140009122.png" alt="image-20201207140009122" style="zoom:33%;" />
 
 
 

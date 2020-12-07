@@ -85,7 +85,7 @@
 >
 > - 각 쓰레드별로 자신만의 스택과 레지스터 가짐
 >
->   ![image-20201108123059058](file:///Users/leedain/Desktop/TIL/CS.assets/image-20201108123059058.png?lastModify=1607316128)
+>   <img src="OS.assets/image-20201207135738948.png" alt="image-20201207135738948" style="zoom:33%;" />
 >
 > - 한 순간에는 하나의 쓰레드만 실행 가능
 
