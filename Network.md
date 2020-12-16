@@ -832,3 +832,85 @@ HTTPS도 무조건 안전한 것은 아니다. (신뢰받는 CA 기업이 아닌
 **CA**:question:
 
 > Certificate Authority로, 공개키를 저장해주는 신뢰성이 검증된 민간 기업ㄴ
+
+
+
+## 11. 로드 밸런싱 (Load Balancing)
+
+> 둘 이상의 CPU or 저장장치와 같은 컴퓨터 자원들에게 작업을 나누는 것 
+
+<img src="Network.assets/image-20201216140508412.png" alt="image-20201216140508412" style="zoom: 33%;" />
+
+요즘 시대에 웹사이트에 접속하는 인원이 급격하게 늘어났다.
+
+따라서 이 사람들에 대해 모든 트래픽을 감당하기에는 1대의 서버로는 부족하다. 대응 방안으로 하드웨어의 성능을 올리거나(scale-up), 여러대의 서버가 나눠서 일하도록 만드는 것(scale-out)이 있다. 
+
+하드웨어 향상 비용이 더욱 비싸기도 하고, 서버가 여러대면 무중단 서비스를 제공하는 환경 구성이 용이하므로 scale-out이 더 효과적이다. 이때, 여러 서버에게 균등하게 트래픽을 분산시켜 주는 것이 바로 **로드 밸런싱** 이다.
+
+
+
+**로드 밸런싱**은 분산식 웹 서비스로, 여러 서버에 부하(Load)를 나누어주는 역할을 한다. Load Balancer를 클라이언트와 서버 사이에 두고, 부하가 일어나지 않도록 여러 서버에 분산시켜주는 방식이다. 서비스를 운영하는 사이트의 규모에 따라 웹 서버를 추가로 증설하면서 로드 밸런서로 관리해주면 웹 서버의 부하를 해결할 수 있다.
+
+
+
+### 1) 로드 밸런서가 서버를 선택하는 방식
+
+- 라운드 로빈 (Round Robin) : CPU 스케쥴링의 라운드 로빈 방식 활용
+- Least Connections : 연결 개수가 가장 적은 서버 선택 (트래픽으로 인해 세션이 길어지는 경우 권장)
+- Source : 사용자 IP를 해싱하여 분배 (특정 사용자가 항상 같은 서버로 연결되는 것 보장)
+
+
+
+### 2) 로드 밸런서 장애 대비
+
+- 서버를 분배하는 로드 밸런서에 문제가 생길 수 있기 때문에 로드 밸런서를 이중화하여 대비한다.
+
+> Active 상태와 Passive 상태
+
+
+
+
+
+## 12. Blocking I/O & Non-Blocking I/O
+
+> I/O 작업은 Kernel level에서만 수행할 수 있다. 따라서, Process, Thread는 커널에게 I/O를 요청해야 한다. 
+
+
+
+### 1) Blocking I/O
+
+- 진행 순서
+  - Process(Thread)가 Kernel에게 I/O를 요청하는 함수를 호출
+  - Kernel이 작업을 완료하면 작업 결과를 반환 받음.
+- 특징
+  - I/O 작업이 진행되는 동안 user Process(Thread)는 자신의 작업을 중단한 채 대기
+  - Resource 낭비가 심함 (I/O 작업이 CPU 자원을 거의 쓰지 않으므로)
+
+
+
+여러 client가 접속하는 서버를 Blocking 방식으로 구현하는 경우,
+
+I/O 작업을 진행하는 작업을 중지 -> 다른 client가 진행중인 작업을 중지하면 안되므로, client 별로 별도의 Thread 생성 -> 접속자 수 매우 많아짐.
+
+이로 인해, 많아진 Threads로 context switching 횟수가 증가함 -> 비효율적 동작 방식 
+
+
+
+### 2) Non-Blocking I/O
+
+- 진행 순서
+
+  - User Process가 recvfrom 함수를 호출 (커널에게 해당 Socket으로부터 data를 받고 싶다고 요청함)
+
+  - kernel은 이 요청에 대해서, 곧바로 recvBuffer를 채워서 보내지 못하므로, "EWOULDBLOCK"을 return 함 
+
+  - Blocking 방식과 달리, User Process는 다른 작업을 진행할 수 있음.
+
+  - recvBuffer에 user가 받을 수 있는 데이터가 있는 경우, Buffer로부터 데이터를 복사하여 받아옴.
+
+    > 이때, recvBuffer는 Kernel이 가지고 있는 메모리에 적재되어 있으므로, Memory간 복사로 인해 I/O 보다 훨씬 빠른 속도로 data를 받아올 수 있음.
+
+  - recvfrom 함수는 빠른 속도로 data를 복사한 후, 복사한 data의 길이와 함께 반환함.
+
+- 특징
+  - I/O 작업이 진행되는 동안 User Process의 작업은 중단하지 않는다.
