@@ -289,3 +289,168 @@
 
 
 
+## 5. SQL - JOIN
+
+> 조인이란 ?
+>
+> 두 개이상의 테이블이나 데이터 베이스를 연결하여 데이터를 검색하는 방법
+
+테이블을 연결하려면, 적어도 하나의 칼럼을 서로 공유하고 있어야 하므로 이를 이용하여 데이터 검색에 활용한다.
+
+
+
+### 1) INNER JOIN
+
+<img src="DB.assets/image-20201221141848556.png" alt="image-20201221141848556" style="zoom:33%;" />
+
+> 교집합, 기준 테이블과 join 테이블의 중복된 값을 보여준다.
+
+```sql
+SELECT
+A.NAME, B.AGE
+FROM EX_TABLE A
+INNER JOIN JOIN_TABLE B ON A.NO_EMP = B.NO_EMP
+```
+
+
+
+### 2) LEFT OUTER JOIN
+
+<img src="DB.assets/image-20201221142916495.png" alt="image-20201221142916495" style="zoom:33%;" />
+
+> 기준 테이블 값과 조인 테이블과 중복된 값을 보여준다.
+>
+> 왼쪽 테이블을 기준으로 JOIN을 한다고 생각하면 편하다.
+
+```sql
+SELECT
+A.NAME, B.AGE
+FROM EX_TABLE A
+LEFT OUTER JOIN JOIN_TABLE B ON A.NO_EMP = B.NO_EMP
+```
+
+
+
+### 3) RIGHT OUTER JOIN
+
+<img src="DB.assets/image-20201221143058725.png" alt="image-20201221143058725" style="zoom:33%;" />
+
+> 오른쪽 테이블 기준으로 JOIN
+
+```sql
+SELECT
+A.NAME, B.AGE
+FROM EX_TABLE A
+RIGHT OUTER JOIN JOIN_TABEL B ON A.NO_EMP = B.NO_EMP
+```
+
+
+
+### 4) FULL OUTER JOIN
+
+<img src="DB.assets/image-20201221143224361.png" alt="image-20201221143224361" style="zoom:33%;" />
+
+> 합집합, A와 B 테이블의 모든 데이터가 검색된다.
+
+```sql
+SELECT
+A.NAEM, B.AGE
+FROM EX_TABLE A
+FULL OUTER JOIN JOIN_TABLE B ON A.NO_EMP = B.NO_EMP
+```
+
+
+
+### 5) CROSS JOIN
+
+<img src="DB.assets/image-20201221143345775.png" alt="image-20201221143345775" style="zoom:33%;" />
+
+> 모든 경우의 수를 전부 표현해주는 방식
+>
+> A가 3개, B가 4개면 총 3*4 = 12개의 데이터가 검색된다.
+
+```sql
+SELECT
+A.NAME, B.AGE
+FROM EX_TABLE A
+CROSS JOIN JOIN_TABEL B
+```
+
+
+
+### 6) SELF JOIN
+
+<img src="DB.assets/image-20201221143524387.png" alt="image-20201221143524387" style="zoom:33%;" />
+
+> 자기 자신과 조인하는 것 
+>
+> 하나의 테이블을 여러 번 복사해서 조인한다고 생각하면 편하다.
+>
+> 자신이 갖고 있는 칼럼을 다양하게 변형시켜 활용할 때 자주 사용한다.
+
+```sql
+SELECT
+A.NAME, B.AGE
+FROM EX_TABLE A, EX_TABLE B
+```
+
+
+
+## 6. SQL Injection
+
+> 해커에 의해 조작된 SQL 쿼리문이 데이터 베이스에 그대로 전달되어 비정상적 명령을 실행시키는 공격 기법
+
+
+
+### 1) 공격 방법
+
+#### 1. 인증 우회
+
+보통 로그인을 할 때, 아이디와 비밀번호를 Input창에 입력하게 된다. 쉽게 이해하기 위해 가벼운 예를 들어보자. 아이디가 abc, 비밀번호가 1234일 때 쿼리는 아래와 같은 방식으로 전송될 것 이다.
+
+```sql
+SELECT * FROM USER WHERE ID = "abc" AND PASSWORD = "1234";
+```
+
+SQL Injection으로 공격할 때, input 창에 비밀번호를 입력함과 동시에 다른 쿼리문을 함께 입력하는 것이다.
+
+```sql
+1234; DELETE * USER FROM ID = "1";
+```
+
+보안이 완벽하지 않은 경우, 이처럼 비밀번호가 아이디와 일치해서 True가 되고 뒤에 작성한 DELETE문도 데이터베이스에 영향을 줄 수도 있게 되는 치명적인 상황이다.
+
+이 밖에도 기본 쿼리문의 WHERE 절에 OR문을 추가하여 `'1' = '1'`과 같은 true문을 작성하여 무조건 적용되도록 수정한 뒤 DB를 마음대로 조작할 수도 있다.
+
+
+
+#### 2. 데이터 노출
+
+시스템에서 발생하는 에러 메시지를 이용해 공격하는 방법이다. 보통 에러는 개발자가 버그를 수정하는 면에서 도움을 받을 수 있는 존재다. 해커들은 이를 역이용해 악의적인 구문을 삽입하여 에러를 유발시킨다.
+
+즉 예를 들면, 해커는 GET 방식으로 동작하는 URL 쿼리 스트링을 추가하여 에러를 발생시킨다. 이에 해당하는 오류가 발생하면, 이를 통해 웹앱의 데이터베이스 구조를 유추할 수 있고 해킹에 활용한다.
+
+
+
+### 2) 방어 방법
+
+#### 1. Input 값을 받을 때, 특수문자 여부 검사하기.
+
+> 로그인 전, 검증 로직을 추가하여 미리 설정한 특수 문자들이 들어왔을 때 요청을 막아낸다.
+
+
+
+#### 2. SQL 서버 오류 발생 시, 해당하는 에러 메시지 감추기
+
+> view를 활용하여 원본 데이터베이스 테이블에는 접근 권한을 높인다. 일반 사용자는 view로만 접근하여 에러를 볼 수 없도록 만든다.
+
+
+
+#### 3. preparestatement 사용하기
+
+> preparestatement를 사용하면, 특수문자를 자동으로 escaping 해준다. (statement와는 다르게 쿼리문에서 전달인자 값을 `?`로 받는 것) 이를 활용해 서버 측에서 필터링 과정을 통해서 공격을 방어한다.
+
+
+
+
+
